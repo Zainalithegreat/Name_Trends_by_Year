@@ -9,11 +9,12 @@ define('GENDER_FIELD', 1);
 define('COUNT_FIELD', 2);
 
 define('MIN_YEAR', 1880);
-define('MAX_YEAR', 2014);
+define('MAX_YEAR', 2023);
 define('GENDER_MALE', 'M');
 define('GENDER_FEMALE', 'F');
 define('COUNT_ALL', 'all');
 
+$header = ['Rank', 'Name', 'Metaphone', 'Gender', 'Count', 'Percent'];
 if (!isset($_GET[YEAR])){
     echo '<h1>ERROR!</h1>';
     echo '<p>Year must be supplied!</p>\n';
@@ -99,8 +100,13 @@ fclose($file);
 <body>
 <?php
 $total = array_sum(array_column($names, COUNT_FIELD));
-
+echo "    <h1> Popular " . ($gender === GENDER_MALE ? "male" : "female") . " names from ". $year . "</h1>\n";
 echo "        <table>\n";
+echo"            <tr>\n";
+for($h = 0; $h < count($header); $h++){
+    echo "            <th>" . $header[$h] . "</th>\n";
+}
+echo "            </tr>";
 for($i = 0; $i < count($names) && ($count == "all" || $i < $count); $i++){
     echo "        <tr>\n";
     echo "            <td>" . ($i + 1) . " </td>\n";
