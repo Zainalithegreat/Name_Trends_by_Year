@@ -105,6 +105,7 @@ for($i = 0; $i < count($names) && ($count == "all" || $i < $count); $i++){
     echo "        <tr>\n";
     echo "            <td>" . ($i + 1) . " </td>\n";
     echo "            <td>" . $names[$i][NAME_FIELD] . " </td>\n";
+    echo "            <td>" . metaphone($names[$i][NAME_FIELD]) . " </td>\n";
     echo "            <td>" . $names[$i][GENDER_FIELD] . " </td>\n";
     echo "            <td>" . $names[$i][COUNT_FIELD] . " </td>\n";
     $percent = 100 * $names[$i][COUNT_FIELD] / $total;
